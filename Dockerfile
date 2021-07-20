@@ -14,7 +14,7 @@ RUN curl -sL https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-2
     rm -rf /tmp/graalvm.tar.gz
 
 ENV PATH=/opt/graalvm/bin:$PATH \
-    JAVA_HOME=/home/eduk8s/bin/graalvm
+    JAVA_HOME=/opt/graalvm
 
 RUN gu install native-image
 
@@ -32,4 +32,4 @@ USER 1001
 COPY --from=graalvm-installation --chown=1001:0 /opt/graalvm /opt/graalvm
 
 ENV PATH=/opt/graalvm/bin:$PATH \
-    JAVA_HOME=/home/eduk8s/bin/graalvm
+    JAVA_HOME=/opt/graalvm
