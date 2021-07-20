@@ -20,5 +20,5 @@ jobs:
       - name: Build workshop image and push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          tags: ghcr.io/eduk8s-labs/${GITHUB_REPOSITORY}:${GITHUB_SHA}
+          tags: ghcr.io/eduk8s-labs/${{github.repository}}:${{github.sha}}
           push: true
