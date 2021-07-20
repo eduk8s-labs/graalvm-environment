@@ -20,6 +20,15 @@ RUN gu install native-image
 
 FROM ${WORKSHOP_BASE_IMAGE}
 
+USER root
+
+RUN HOME=/root && \
+    INSTALL_PKGS="zlib-devel" && \
+    dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    dnf clean -y --enablerepo='*' all
+
+USER 1001
+
 COPY --from=graalvm-installation --chown=1001:0 /opt/graalvm /opt/graalvm
 
 ENV PATH=/opt/graalvm/bin:$PATH \
